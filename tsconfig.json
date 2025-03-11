@@ -3,15 +3,18 @@
   "compilerOptions": {
     "strict": true,
     "paths": {
-      "@/*": [
-        "./*"
-      ]
+      "@/*": ["./*"]
     }
   },
   "include": [
     "**/*.ts",
     "**/*.tsx",
     ".expo/types/**/*.ts",
-    "expo-env.d.ts"
+    "expo-env.d.ts",
+    "component/Tictac.jsx",
+    "component/Shagai.jsx",
+    "component/Todo.jsx",
+    "app/index.jsx",
+    "app/_layout.jsx"
   ]
 }
