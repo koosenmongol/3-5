@@ -5,9 +5,13 @@ import {
   TouchableOpacity,
   View,
   CheckBox,
+  ScrollView,
+  Pressable,
+  FlatList,
 } from "react-native";
 import React, { useState } from "react";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
+
 const Todo = () => {
   const [enterText, setenterText] = useState("");
   const [taskList, setTaskList] = useState([]);
@@ -33,20 +37,34 @@ const Todo = () => {
           style={styles.inputStyle}
           placeholder="Add a task"
         />
-        <TouchableOpacity onPress={buttonClick} style={styles.buttonStyle}>
+        <Pressable onPress={buttonClick} style={styles.buttonStyle}>
           <Text style={{ color: "white", fontSize: 20 }}>Add</Text>
-        </TouchableOpacity>
+        </Pressable>
       </View>
-      <View style={styles.taskList}>
+      <FlatList
+        style={styles.taskList}
+        data={taskList}
+        renderItem={(itemdata) => {
+          return (
+            <View style={styles.onelistStyle}>
+              <BouncyCheckbox
+                onPress={(isChecked) => clear(isChecked, index)}
+              />
+              <Text style={styles.task}>{itemdata.item}</Text>
+            </View>
+          );
+        }}
+      />
+      {/* <ScrollView style={styles.taskList}>
         {taskList.map((task, index) => (
-          <View style={styles.onelistStyle}>
+          <View key={index} style={styles.onelistStyle}>
             <BouncyCheckbox onPress={(isChecked) => clear(isChecked, index)} />
             <Text style={styles.task} key={index}>
               {task}
             </Text>
           </View>
         ))}
-      </View>
+      </ScrollView> */}
     </View>
   );
 };
@@ -82,11 +100,8 @@ const styles = StyleSheet.create({
   },
   taskList: {
     width: "90%",
-    borderWidth: 1,
-    bordercolor: "gray",
     marginTop: 20,
     flex: 1,
-    borderRadius: 5,
     padding: 5,
     gap: 10,
   },
@@ -100,5 +115,6 @@ const styles = StyleSheet.create({
   },
   onelistStyle: {
     flexDirection: "row",
+    marginTop: 5,
   },
 });
