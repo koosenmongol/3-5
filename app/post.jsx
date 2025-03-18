@@ -4,9 +4,8 @@ import { Link } from "expo-router";
 
 const post = () => {
   return (
-    <View>
-      <Text>post</Text>
-      <Link href="/index">Home шилжих</Link>
+    <View style={{ alignItems: "center" }}>
+      <Text style={{ fontWeight: "bold" }}>Post</Text>
     </View>
   );
 };
