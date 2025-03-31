@@ -12,6 +12,7 @@ const index = () => {
   return (
     // <Flatlistexample />
     <Todo />
+    // <Nike />
     // <View style={styles.container}>
     //   <Text style={{ fontWeight: "bold" }}>Home</Text>
     //   <Link href="/post">

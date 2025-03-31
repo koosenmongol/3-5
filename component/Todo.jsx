@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
-
+import TaskItem from "./TaskItem";
 const Todo = () => {
   const [enterText, setenterText] = useState("");
   const [taskList, setTaskList] = useState([]);
@@ -45,26 +45,9 @@ const Todo = () => {
         style={styles.taskList}
         data={taskList}
         renderItem={(itemdata) => {
-          return (
-            <View style={styles.onelistStyle}>
-              <BouncyCheckbox
-                onPress={(isChecked) => clear(isChecked, index)}
-              />
-              <Text style={styles.task}>{itemdata.item}</Text>
-            </View>
-          );
+          return <TaskItem text={itemdata.item} />;
         }}
       />
-      {/* <ScrollView style={styles.taskList}>
-        {taskList.map((task, index) => (
-          <View key={index} style={styles.onelistStyle}>
-            <BouncyCheckbox onPress={(isChecked) => clear(isChecked, index)} />
-            <Text style={styles.task} key={index}>
-              {task}
-            </Text>
-          </View>
-        ))}
-      </ScrollView> */}
     </View>
   );
 };
@@ -104,17 +87,5 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 5,
     gap: 10,
-  },
-  task: {
-    fontSize: 20,
-    color: "white",
-    borderWidth: 1,
-    backgroundColor: "#a373f0",
-    borderRadius: 5,
-    padding: 5,
-  },
-  onelistStyle: {
-    flexDirection: "row",
-    marginTop: 5,
   },
 });
