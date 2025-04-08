@@ -4,24 +4,26 @@ import {
   TextInput,
   TouchableOpacity,
   View,
-  CheckBox,
   ScrollView,
   Pressable,
   FlatList,
 } from "react-native";
 import React, { useState } from "react";
-import BouncyCheckbox from "react-native-bouncy-checkbox";
+
 import TaskItem from "./TaskItem";
+import TaskInput from "./TaskInput";
 const Todo = () => {
-  const [enterText, setenterText] = useState("");
+  const [isModalVisible, setIsModalVisible] = useState(false);
   const [taskList, setTaskList] = useState([]);
-  const handleInput = (text) => {
-    setenterText(text);
+  const CancelAddTask = () => {
+    setIsModalVisible(false);
   };
-  const buttonClick = () => {
-    setTaskList((currentTaskList) => [...taskList, enterText]);
-    // console.log(taskList);
+  const AddTask = (enterText) => {
+    if (enterText !== "")
+      setTaskList((currentTaskList) => [...currentTaskList, enterText]);
+    CancelAddTask();
   };
+
   const clear = (isChecked, index) => {
     console.log(isChecked, index);
     setTaskList((currentTaskList) => {
@@ -31,16 +33,15 @@ const Todo = () => {
   const [isChecked, setIsChecked] = useState(true);
   return (
     <View style={styles.container}>
-      <View style={styles.heading}>
-        <TextInput
-          onChangeText={(text) => handleInput(text)}
-          style={styles.inputStyle}
-          placeholder="Add a task"
-        />
-        <Pressable onPress={buttonClick} style={styles.buttonStyle}>
-          <Text style={{ color: "white", fontSize: 20 }}>Add</Text>
-        </Pressable>
-      </View>
+      <Pressable
+        style={styles.buttonStyle}
+        onPress={() => setIsModalVisible(true)}
+      >
+        <Text style={{ color: "white", fontWeight: "bold" }}>Add task</Text>
+      </Pressable>
+      {isModalVisible && (
+        <TaskInput onAddTask={AddTask} onCancel={CancelAddTask} />
+      )}
       <FlatList
         style={styles.taskList}
         data={taskList}
@@ -61,25 +62,16 @@ const styles = StyleSheet.create({
     padding: 20,
     alignItems: "center",
   },
-  inputStyle: {
-    width: "70%",
-    height: 50,
-    borderWidth: 1,
-    borderRadius: 5,
-  },
   buttonStyle: {
-    width: "20%",
+    width: "50%",
     height: 50,
     borderWidth: 1,
     borderColor: "gray",
-    color: "black",
+    color: "white",
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 5,
     backgroundColor: "#a373f0",
-  },
-  heading: {
-    flexDirection: "row",
   },
   taskList: {
     width: "90%",
