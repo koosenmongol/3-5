@@ -1,0 +1,20 @@
+.container {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+}
+.oneDay {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 400px;
+  border: 1px solid black;
+}
+.fiveDay {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}

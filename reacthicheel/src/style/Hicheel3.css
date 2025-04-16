@@ -1,0 +1,15 @@
+.container {
+  width: 100vw;
+  /* background-color: red; */
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.container p {
+  font-size: 50px;
+}
+button {
+  border: 1px solid darkblue;
+}

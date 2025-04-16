@@ -1,0 +1,56 @@
+.container {
+  background-color: aliceblue;
+}
+.Tictac {
+  width: 40vw;
+  height: 40vw;
+  background-color: white;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1vw;
+  justify-content: center;
+  align-content: center;
+}
+.winPage {
+  width: 40vw;
+  height: 40vw;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+}
+.winPage h1 {
+  color: orange;
+}
+
+.newButton {
+  width: 20vw;
+  font-size: 50px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: purple;
+}
+.box {
+  width: 12vw;
+  height: 12vw;
+  background-color: purple;
+  font-size: 100px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  border-radius: 10px;
+}
+.box p {
+  margin: 0;
+  font-size: 100px;
+  color: white;
+}
+.box:hover {
+  background-color: rgb(213, 143, 13);
+}

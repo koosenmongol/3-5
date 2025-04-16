@@ -1,0 +1,23 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+}
+.game {
+  width: 70vh;
+  height: 70vh;
+  background-color: blue;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  gap: 20px;
+}
+.box {
+  width: 15vh;
+  height: 15vh;
+  background-color: white;
+  color: black;
+}
+.box:hover {
+  background-color: white;
+}
