@@ -16,7 +16,7 @@ const index = () => {
     // <Shagai />
     // <Nike />
 
-    // <View style={styles.container}>
+    // <View style={styles.containe}>
     //   <Text style={{ fontWeight: "bold" }}>Home</Text>
     //   <Link href="/post">
     //     <View style={styles.linkStyle}>
