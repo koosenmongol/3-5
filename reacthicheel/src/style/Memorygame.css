@@ -1,6 +1,10 @@
 .container {
   width: 100vw;
   height: 100vh;
+  /* background-color: orange; */
+  display: flex;
+  justify-content: center;
+  align-content: center;
 }
 .game {
   width: 70vh;
@@ -17,7 +21,15 @@
   height: 15vh;
   background-color: white;
   color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 80px;
 }
 .box:hover {
   background-color: white;
+}
+
+* {
+  margin: 0;
 }

@@ -2,7 +2,7 @@ import { Alert, StyleSheet, Text, TextInput, View } from "react-native";
 import React, { useState } from "react";
 import PrimaryButton from "../component/PrimaryButton";
 
-const StartGameScreen = () => {
+const StartGameScreen = ({ onPickNumber }) => {
   const [enterNumber, setEnterNumber] = useState("");
   const numberInputHandler = (enteredText) => {
     setEnterNumber(enteredText);
@@ -13,9 +13,10 @@ const StartGameScreen = () => {
   const confirmInputhandler = () => {
     const choseNumber = parseInt(enterNumber);
     if (isNaN(choseNumber) || choseNumber <= 0 || choseNumber > 99)
-      Alert.alert("Үсэг оруулч болохгүй", "1-99 хооронд тоо оруул", [
+      Alert.alert("Үсэг оруулахгүй", "1-99 хооронд тоо оруул", [
         { text: "Okay", style: "destructive", onPress: resetInputhandler },
       ]);
+    onPickNumber(choseNumber);
   };
   return (
     <View style={styles.inputContainer}>

@@ -11,8 +11,10 @@ import Tsagagaar from "./component/Tsagagaar";
 
 const App = () => {
   return (
-    <div className="container">
-      <Input />
+    <div>
+      {/* <Input />
+       */}
+      <Memorygame />
     </div>
   );
 };
