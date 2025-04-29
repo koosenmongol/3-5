@@ -20,6 +20,7 @@ const StartGameScreen = ({ onPickNumber }) => {
   };
   return (
     <View style={styles.inputContainer}>
+      <Text style={styles.header}>Start game</Text>
       <TextInput
         onChangeText={numberInputHandler}
         style={styles.numberInput}
@@ -74,5 +75,12 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flex: 1,
+  },
+  header: {
+    color: "white",
+    fontSize: 20,
+    borderWidth: 1,
+    borderColor: "white",
+    padding: 10,
   },
 });

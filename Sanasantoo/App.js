@@ -11,13 +11,16 @@ import StartGameScreen from "./screens/StartGameScreen";
 import GameScreen from "./screens/GameScreen";
 export default function App() {
   const [userNumber, setUserNumber] = useState();
+  const [screen, setScreen] = useState(true);
   const pickedNumberHandler = (pickedNumber) => {
     setUserNumber(pickedNumber);
+    setScreen(false);
   };
-  let screen = <StartGameScreen onPickNumber={pickedNumberHandler} />;
-  if (userNumber) {
-    screen = <GameScreen number={userNumber} />;
-  }
+  const Refresh = () => {
+    setScreen(true);
+    console.log("refresh");
+  };
+
   return (
     <LinearGradient colors={["#4e0329", "#ddb52f"]} style={styles.background}>
       <ImageBackground
@@ -26,7 +29,11 @@ export default function App() {
         imageStyle={styles.Imagebackground}
         style={{ flex: 1 }}
       >
-        {screen}
+        {screen ? (
+          <StartGameScreen onPickNumber={pickedNumberHandler} />
+        ) : (
+          <GameScreen number={userNumber} gameRestart={Refresh} />
+        )}
       </ImageBackground>
     </LinearGradient>
   );
