@@ -1,19 +1,31 @@
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
-import { useNavigation } from "@react-navigation/native";
+// import { useNavigation } from "@react-navigation/native";
+import CategoryItem from "../Components/CategoryItem";
+import { CATEGORIES } from "../data/data";
+const CategoriesScreen = ({ navigation }) => {
+  // const navigation = useNavigation();
+  const renderCategoryItem = (itemData) => {
+    const onPress = () => {
+      console.log(itemData.item.id);
+      navigation.navigate("Meals", { categoryId: itemData.item.id });
+    };
+    return (
+      <CategoryItem
+        title={itemData.item.title}
+        color={itemData.item.color}
+        onPress={onPress}
+      />
+    );
+  };
 
-const CategoriesScreen = () => {
-  const navigation = useNavigation();
   return (
-    <View style={styles.Container}>
-      <Text>CategoriesScreen</Text>
-      <Pressable
-        style={styles.buttonStyle}
-        onPress={() => navigation.navigate("Meals")}
-      >
-        <Text>Go Meals</Text>
-      </Pressable>
-    </View>
+    <FlatList
+      data={CATEGORIES}
+      keyExtractor={(item) => item.id}
+      renderItem={renderCategoryItem}
+      numColumns={2}
+    />
   );
 };
 
